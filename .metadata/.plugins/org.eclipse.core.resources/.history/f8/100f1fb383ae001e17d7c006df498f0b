@@ -1,0 +1,52 @@
+1. User / DB 생성
+-- root 계정으로 DB생성, User생성
+--DB
+create database mywebdb;
+--User
+create user 'mywebUser'@'localhost'
+identified by 'mysql';
+--권한부여
+grant all privileges on mywebdb.* to
+'mywebUser'@'localhost' with grant option;
+--권한 확인
+flush privileges;
+
+---------------------일반적으로 DB는 _으로 단어구분
+read_count(sql) => readCount(java)
+
+-------------------------
+DB테이블 생성
+create table board(
+bno bigint not null auto_increment,
+title varchar(200) not null,
+writer varchar(100) not null,
+content text not null,
+reg_at datetime default now(),
+mod_at datetime default now(),
+read_count int default 0,
+cmt_qty int default 0,
+has_file int default 0,
+primary key(bno));
+
+----------------------
+pagung 
+ - list의 내용을 10개씩 끊어서 출력
+ select * from board order by bno desc limit 0, 10;
+ 
+ limit 시작번지, 개수
+ <1 2 3 4 5 6 7 8 9 10>
+ 1 => limit 0, 10 => (pagingNo - 1) * 10
+ 2 => limit 10, 10 => (pagingNo - 1) * 10
+ 3 => limit 20, 10 => (pagingNo - 1) * 10
+ 
+ ----------------------------
+ comment
+ 
+ create table comment(
+ cno bigint auto_increment,
+ bno bigint not null,
+ writer varchar(100) not null,
+ content text not null,
+ reg_at datetime default now(),
+ mod_at datetime default now(),
+ primary key(cno));
