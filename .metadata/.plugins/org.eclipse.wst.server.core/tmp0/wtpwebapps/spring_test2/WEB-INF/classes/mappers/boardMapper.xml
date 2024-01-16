@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  
 	<select id="getList" resultType="com.myweb.www.domain.BoardVO">
 		select * from board
-		<include refid="search"></include>
+		<include refid="search"/>
 		 order by bno desc limit #{pageStart}, #{qty};
 	</select>
 	<select id="getDetail" resultType="com.myweb.www.domain.BoardVO">
@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<select id="getTotalCount" resultType="int">
-		select count(bno) from board <include refid="search"></include>;
+		select count(bno) from board <include refid="search"/>;
 	</select>
 	
 	<select id="selectOneBno" resultType="long">

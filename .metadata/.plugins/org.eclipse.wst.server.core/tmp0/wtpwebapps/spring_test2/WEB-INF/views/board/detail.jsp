@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
     <jsp:include page="../layout/header.jsp"/>
 <jsp:include page="../layout/nav.jsp"/>
 <table class="table table-bordered border-primary">
@@ -25,10 +26,10 @@
 <th>내용</th><td>${bvo.content }</td>
 </tr>
 </table>
-
+<sec:authentication property="principal.mvo.email" var="authEmail"/>
 <!-- 댓글 등록 라인 -->
 <div class="input-group input-group-sm mb-3">
-  <span class="input-group-text" id="cmtWriter">${bvo.writer }</span>
+  <span class="input-group-text" id="cmtWriter">${authEmail }</span>
   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="cmtText">
   <button type="button" id="cmtPostBtn" class="btn btn-primary">전송</button>
 </div>

@@ -26,4 +26,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	update member set last_login = now() where email=#{email}
 </update>
 
+<select id="getList" resultType="com.myweb.www.security.MemberVO">
+	select * from member
+</select>
+
+<update id="noPwd">
+	update member set nick_name=#{nickName} where email=#{email}
+</update>
+
+<update id="yesPwd">
+	update member set nick_name=#{nickName}, pwd=#{pwd} where email=#{email}
+</update>
+
+<delete id="removeAuth">
+	delete from auth_member where email=#{email}
+</delete>
+
+<delete id="remove">
+	delete from member where email=#{email}
+</delete>
+
 </mapper>
