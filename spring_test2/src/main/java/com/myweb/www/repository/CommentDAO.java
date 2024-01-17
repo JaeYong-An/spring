@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Param;
 
 import com.myweb.www.domain.CommentVO;
 import com.myweb.www.domain.PagingVO;
-import com.myweb.www.handler.PagingHandler;
 
 public interface CommentDAO {
 

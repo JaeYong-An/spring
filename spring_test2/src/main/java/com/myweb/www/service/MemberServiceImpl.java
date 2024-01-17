@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.myweb.www.repository.MemberDAO;
-import com.myweb.www.security.AuthVO;
 import com.myweb.www.security.MemberVO;
 
 import lombok.RequiredArgsConstructor;

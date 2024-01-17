@@ -3,8 +3,6 @@ package com.myweb.www.repository;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
-
-import com.myweb.www.domain.BoardDTO;
 import com.myweb.www.domain.BoardVO;
 import com.myweb.www.domain.PagingVO;
 
