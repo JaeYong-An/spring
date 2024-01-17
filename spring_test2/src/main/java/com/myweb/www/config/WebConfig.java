@@ -42,6 +42,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 		// 그 외 시타 사용자 설정
 		//multipartConfig 설정
 		//사용자지정 익셉션 처리지정
+		registration.setInitParameter("throwExceptionIfNoHandlerFound","true");
 		
 		//파일 업로드 설정
 		String uploadLocation = "D:\\_myProject\\_java\\_fileUpload";
