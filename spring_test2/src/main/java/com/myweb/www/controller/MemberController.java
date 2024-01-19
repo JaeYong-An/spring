@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -51,6 +52,7 @@ public class MemberController {
 	
 	@PostMapping("/login")
 	public String loginPost(HttpServletRequest request, RedirectAttributes re) {
+		
 		//로그인 실패시 다시 로그인 페이지로 돌아와 오류메시지 전송
 		re.addAttribute("email", request.getAttribute("email"));
 		re.addAttribute("errMsg", request.getAttribute("errMsg"));
@@ -94,6 +96,12 @@ public class MemberController {
 	@GetMapping("/remove")
 	public String removeMember(@RequestParam("email")String email, HttpServletRequest request, HttpServletResponse response) {
 		msv.remove(email);
+		logOut(request, response);
+		return "index";
+	}
+	
+	@PostMapping("/logout")
+	public String logOut(HttpServletRequest request, HttpServletResponse response) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		
 		new SecurityContextLogoutHandler().logout(request, response, authentication);

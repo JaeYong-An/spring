@@ -46,6 +46,7 @@ public class BoardServiceImpl implements BoardService{
 		return isOK;
 	}
 
+	@Transactional
 	@Override
 	public List<BoardVO> getList(PagingVO pgvo) {
 		// TODO Auto-generated method stub

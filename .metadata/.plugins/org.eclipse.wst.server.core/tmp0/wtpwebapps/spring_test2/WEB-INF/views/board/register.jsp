@@ -10,10 +10,9 @@
   <label for="title" class="form-label">Title</label>
   <input type="text" name="title" class="form-control" id="title" placeholder="title...">
 </div>
-<sec:authentication property="principal.mvo.email" var="authEmail"/>
 <div class="mb-3">
   <label for="writer" class="form-label">writer</label>
-  <input type="text" name="writer" class="form-control" id="writer" value="${authEmail }" readonly>
+  <input type="text" name="writer" class="form-control" id="writer" value="${ses }" readonly>
 </div>
 <div class="mb-3">
   <label for="content" class="form-label">content</label>

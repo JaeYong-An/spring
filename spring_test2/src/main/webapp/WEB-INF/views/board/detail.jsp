@@ -26,6 +26,7 @@
 <th>내용</th><td>${bvo.content }</td>
 </tr>
 </table>
+<sec:authorize access="isAuthenticated()">
 <sec:authentication property="principal.mvo.email" var="authEmail"/>
 <!-- 댓글 등록 라인 -->
 <div class="input-group input-group-sm mb-3">
@@ -33,6 +34,7 @@
   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="cmtText">
   <button type="button" id="cmtPostBtn" class="btn btn-primary">전송</button>
 </div>
+</sec:authorize>
 
 
 <!-- 댓글 표시 라인 -->
@@ -45,12 +47,12 @@
   	<span>modAt</span>
   </li>
 </ul>
-
+<sec:authorize access="isAuthenticated()">
 <!-- 댓글 더보기 버튼 -->
 <div>
 <button type="button" class="btn btn-primary" style="visibility:hidden" id="moreBtn" data-page="1">더보기</button>
 </div>
-
+</sec:authorize>
 <!-- 모달 창 -->
 <div class="modal" id="myModal" tabindex="-1">
   <div class="modal-dialog">
@@ -104,11 +106,11 @@
   </ul>
 </div>
 
-
-<a href="/board/modify?bno=${bvo.bno }"><button type="button" class="btn btn-primary">수정</button></a>
+	<c:if test="${ses } eq ${bvo.writer }">
+	<a href="/board/modify?bno=${bvo.bno }"><button type="button" class="btn btn-primary">수정</button></a>
 	<a href="/board/remove?bno=${bvo.bno }"><button type="button" class="btn btn-primary">삭제</button></a>
+	</c:if>
 	<a href="/board/list"><button type="button" class="btn btn-primary">리스트</button></a>
-	
 	<script>
 		let bnoVal = `<c:out value="${bdto.bvo.bno}" />`;
 		console.log(bnoVal);

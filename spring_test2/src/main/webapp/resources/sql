@@ -131,3 +131,9 @@ email varchar(100) not null,
 auth varchar(50) not null);
 
 alter table auth_member add constraint fk_auth foreign key(email) references member(email);
+
+------------------------------------
+
+변경점
+1. 비로그인시 댓글 등록창 안 보이게
+2. 작성자와 로그인 이메일 불일치시 버튼 안 보이게

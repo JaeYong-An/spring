@@ -22,8 +22,10 @@ import com.myweb.www.service.MemberService;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
+@ToString
 @Slf4j
 @Component
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
@@ -54,6 +56,9 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 		boolean isOK = msv.updateLastLogin(getAuthEmail());
 
 		HttpSession ses = request.getSession();
+		
+		ses.setAttribute("ses", getAuthEmail());
+		
 		log.info("loginSuccess >> ses>>"+ses.toString());
 		
 		if(!isOK || ses==null) {
